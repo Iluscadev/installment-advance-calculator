@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-export const ResultsContainer = styled.aside`
+export const ResultsContainer = styled.div`
   display: flex;
   justify-content: center;
-
-  min-width: 250px;
+  flex-grow: 1.5;
 
   background-color: var(--gray3);
   border-radius: 0 5px 5px 0;
@@ -29,6 +28,7 @@ export const ResultsTitle = styled.h3`
   background-color: var(--gray3);
   font-style: italic;
   border-bottom: 1px solid var(--paleblue);
+  white-space: nowrap;
 `;
 
 export const ResultsText = styled.span`
@@ -37,4 +37,6 @@ export const ResultsText = styled.span`
   color: var(--paleblue);
   background-color: var(--gray3);
   font-weight: 500;
+
+  white-space: nowrap;
 `;

@@ -4,6 +4,7 @@ export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-grow: 2;
 
   padding: 10%;
 
@@ -30,6 +31,10 @@ export const Title = styled.h2`
   color: var(--gray5);
   background-color: var(--purewhite);
   font-weight: bold;
+
+  @media (max-width: 320px) {
+    white-space: pre-wrap;
+  }
 `;
 
 
@@ -47,7 +52,6 @@ export const Label = styled.label`
 
 
 export const Input = styled.input`
-  min-width: 250px;
   height: 35px;
   margin: 5px 0;
   padding: 0 8px;
@@ -64,8 +68,8 @@ export const Input = styled.input`
     outline: none;
   }
 
-  @media (max-width: 550px) {
-    min-width: 230px;
+  @media (max-width: 650px) {
+    min-width: 100px;
   }
 `;
 
@@ -73,7 +77,6 @@ export const Input = styled.input`
 export const ButtonSubmit = styled.button`
   width: 100%;
   height: 35px;
-  /* padding: 0 8px; */
 
   background-color: var(--paleblue);
   color: var(--purewhite);

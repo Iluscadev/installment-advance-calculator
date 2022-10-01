@@ -2,14 +2,36 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  box-sizing: border-box;
-  
+  width: 800px;
+  height: 70%;
   border-radius: 5px;
-  border: 2px solid var(--gray7);
 
-  @media (max-width: 550px) {
+  @media (max-width: 650px) {
+    width: auto;
     flex-direction: column;
-    position: absolute;
-    left: 0;
+  }
+
+  @media (max-height: 650px) {
+    flex-direction: column;
   }
 `;
+
+export const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  @media (max-width: 650px) {
+    display: block;
+  }
+
+  @media (max-height: 350px) {
+    display: block;
+  }
+  
+`;
+
+
+ 
