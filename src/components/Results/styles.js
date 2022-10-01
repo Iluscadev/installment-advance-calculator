@@ -24,11 +24,11 @@ export const ResultsContent = styled.div`
 
 export const ResultsTitle = styled.h3`
   margin: 10px;
-
+  padding-bottom: 10px;
   color: var(--paleblue);
   background-color: var(--gray3);
   font-style: italic;
-  border-bottom: 1px solid var(--lighblue);
+  border-bottom: 1px solid var(--paleblue);
 `;
 
 export const ResultsText = styled.span`

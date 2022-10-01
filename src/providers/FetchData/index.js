@@ -4,10 +4,10 @@ export const ResContext = createContext();
 
 export const ResProvider = ({ children }) => {
   const [resData, setResData] = useState({
-    1: 0,
-    15: 0,
-    30: 0,
-    90: 0,
+    1: "R$ 0,00",
+    15: "R$ 0,00",
+    30: "R$ 0,00",
+    90: "R$ 0,00",
   });
 
   return (

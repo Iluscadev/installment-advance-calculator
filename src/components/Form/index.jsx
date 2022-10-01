@@ -10,25 +10,29 @@ import {
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ResContext } from "../../providers/FetchData";
 import api from "../../services/api";
 
 const Form = () => {
   const schema = yup.object().shape({
     amount: yup
-      .number("Valor não permitido")
-      .required("Campo obrigatório")
-      .min(1, "Necessário número positivo"),
+      .number()
+      .typeError("Informe um número válido")
+      .required("Informe um valor")
+      .min(1000, "Apenas valores de 1000 até 9999999")
+      .max(9999999, "Apenas valores de 1000 até 9999999"),
     installments: yup
-      .number("Valor não permitido")
-      .required("Campo obrigatório")
+      .number()
+      .typeError("Informe um número válido")
+      .required("Informe o número de parcelas")
       .min(1, "Mínimo de 1 parcela")
       .max(12, "Máximo de 12 parcelas"),
     mdr: yup
-      .number("Valor não permitido")
-      .required("Campo obrigatório")
-      .min(1, "Necessário número positivo"),
+      .number()
+      .typeError("Informe um número válido")
+      .required("Informe o MDR")
+      .min(0, "Necessário número positivo").max(100, "Máximo de 100%"),
   });
 
   const {
