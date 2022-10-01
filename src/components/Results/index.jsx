@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react";
+import { ResContext } from "../../providers/FetchData";
 import {
   ResultsContainer,
   ResultsContent,
@@ -6,23 +8,23 @@ import {
 } from "./styles";
 
 const Results = () => {
-  const value = 0;
+  const { resData } = useContext(ResContext);
 
   return (
     <ResultsContainer>
       <ResultsContent>
         <ResultsTitle>VOCÊ RECEBERÁ:</ResultsTitle>
         <ResultsText id="tomorrow">
-          <>Amanhã:</> R$ {value}
+          <>Amanhã:</> R$ {resData["1"]}
         </ResultsText>
         <ResultsText id="tomorrow">
-          <>Em 15 dias:</> R$ {value}
+          <>Em 15 dias:</> R$ {resData["15"]}
         </ResultsText>
         <ResultsText id="tomorrow">
-          <>Em 30 dias:</> R$ {value}
+          <>Em 30 dias:</> R$ {resData["30"]}
         </ResultsText>
         <ResultsText id="tomorrow">
-          <>Em 90 dias:</> R$ {value}
+          <>Em 90 dias:</> R$ {resData["90"]}
         </ResultsText>
       </ResultsContent>
     </ResultsContainer>

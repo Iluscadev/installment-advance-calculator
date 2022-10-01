@@ -10,6 +10,9 @@ import {
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext, useEffect } from "react";
+import { ResContext } from "../../providers/FetchData";
+import api from "../../services/api";
 
 const Form = () => {
   const schema = yup.object().shape({
@@ -27,13 +30,25 @@ const Form = () => {
       .required("Campo obrigatório")
       .min(1, "Necessário número positivo"),
   });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-  const onSubmit = () => {
-    console.log("oi");
+
+  const { resData, setResData } = useContext(ResContext);
+
+  const fetchData = async (obj) => {
+    api
+      .post("", obj)
+      .then((response) => setResData(response.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const onSubmit = async (data) => {
+    fetchData(data);
   };
 
   return (
