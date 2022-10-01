@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { ResContext } from "../../providers/FetchData";
+import { useContext } from "react";
+import { ResultContext } from "../../providers/results";
 import {
   ResultsContainer,
   ResultsContent,
@@ -8,7 +8,7 @@ import {
 } from "./styles";
 
 const Results = () => {
-  const { resData } = useContext(ResContext);
+  const { results } = useContext(ResultContext);
 
   return (
     <ResultsContainer>
@@ -16,28 +16,28 @@ const Results = () => {
         <ResultsTitle>VOCÊ RECEBERA:</ResultsTitle>
         <ResultsText id="tomorrow">
           Amanhã:{" "}
-          {resData["1"].toLocaleString("pt-BR", {
+          {results["1"].toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
           })}
         </ResultsText>
         <ResultsText id="tomorrow">
           Em 15 dias:{" "}
-          {resData["15"].toLocaleString("pt-BR", {
+          {results["15"].toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
           })}
         </ResultsText>
         <ResultsText id="tomorrow">
           Em 30 dias:{" "}
-          {resData["30"].toLocaleString("pt-BR", {
+          {results["30"].toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
           })}
         </ResultsText>
         <ResultsText id="tomorrow">
           Em 90 dias:{" "}
-          {resData["90"].toLocaleString("pt-BR", {
+          {results["90"].toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
           })}

@@ -11,8 +11,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { ResContext } from "../../providers/FetchData";
 import api from "../../services/api";
+import { ResultContext } from "../../providers/results";
 
 const Form = () => {
   const schema = yup.object().shape({
@@ -32,7 +32,8 @@ const Form = () => {
       .number()
       .typeError("Informe um número válido")
       .required("Informe o MDR")
-      .min(0, "Necessário número positivo").max(100, "Máximo de 100%"),
+      .min(0, "Necessário número positivo")
+      .max(100, "Máximo de 100%"),
   });
 
   const {
@@ -41,16 +42,18 @@ const Form = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const { resData, setResData } = useContext(ResContext);
+  const { setResults } = useContext(ResultContext);
 
   const fetchData = async (obj) => {
+    console.log(obj);
     api
       .post("", obj)
-      .then((response) => setResData(response.data))
+      .then((response) => setResults(response.data))
       .catch((err) => {
         console.log(err);
       });
   };
+  
   const onSubmit = async (data) => {
     fetchData(data);
   };
