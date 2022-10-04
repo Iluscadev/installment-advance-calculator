@@ -45,15 +45,18 @@ const Form = () => {
   const { setResults } = useContext(ResultContext);
 
   const fetchData = async (obj) => {
-    console.log(obj);
     api
       .post("", obj)
       .then((response) => setResults(response.data))
       .catch((err) => {
-        console.log(err);
+        if (err.code === "ERR_BAD_REQUEST" || err.code === "ECONNABORTED")
+          alert("Something went wrong, please try again");
+        else if (err.code === "ERR_BAD_RESPONSE")
+          alert("Server Internal Error");
+        else throw err;
       });
   };
-  
+
   const onSubmit = async (data) => {
     fetchData(data);
   };
